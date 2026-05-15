@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAPTER — Fine Mediterranean Dining, Kyiv</title>
+<meta name="description" content="CHAPTER Kyiv — Mediterranean cuisine on Verkhnii Val, Podil. Rated 4.7★ by 1,000+ guests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,700;1,6..96,300;1,6..96,400&family=Jost:wght@200;300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0905;--surface:#131008;--surface2:#1a1510;
+  --cream:#f2ead8;--gold:#c9a84c;--gold2:#e4c278;
+  --muted:#6b6355;--border:rgba(201,168,76,0.18);--border2:rgba(201,168,76,0.35);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* GRAIN */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.035;pointer-events:none;z-index:9997;mix-blend-mode:overlay}
+
+/* CURSOR */
+.c-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.c-ring{width:42px;height:42px;border:1px solid rgba(201,168,76,.5);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .5s cubic-bezier(.23,1,.32,1),width .3s,height .3s,opacity .3s}
+body:has(a:hover) .c-ring,body:has(button:hover) .c-ring{width:60px;height:60px;opacity:.35}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9996;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;transition:opacity .8s .2s,visibility .8s .2s}
+#loader.out{opacity:0;visibility:hidden}
+.loader-word{font-family:'Bodoni Moda',serif;font-size:clamp(3rem,8vw,6rem);letter-spacing:.3em;color:var(--gold);overflow:hidden}
+.loader-word span{display:inline-block;transform:translateY(100%);animation:slideUp .8s .3s cubic-bezier(.23,1,.32,1) forwards}
+.loader-line{width:0;height:1px;background:var(--gold);animation:lineGrow 1.2s .8s ease forwards}
+.loader-sub{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .6s 1.4s ease forwards}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switch{
+  display:flex;align-items:center;gap:0;
+  border:1px solid var(--border2);overflow:hidden;
+  flex-shrink:0;
+}
+.lang-btn{
+  font-family:'Jost',sans-serif;
+  font-size:.62rem;letter-spacing:.18em;font-weight:500;
+  padding:.45rem .85rem;cursor:pointer;border:none;
+  background:transparent;color:rgba(201,168,76,.45);
+  transition:all .25s;text-transform:uppercase;
+  position:relative;
+}
+.lang-btn.active{background:var(--gold);color:var(--bg)}
+.lang-btn:not(.active):hover{color:var(--gold)}
+.lang-divider-v{width:1px;height:1.5rem;background:var(--border2);flex-shrink:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:2rem 4rem;transition:padding .5s,background .5s,border .5s}
+nav.stuck{padding:1.1rem 4rem;background:rgba(11,9,5,.88);backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Bodoni Moda',serif;font-size:1.5rem;letter-spacing:.25em;color:var(--gold);text-decoration:none;transition:letter-spacing .4s}
+.nav-logo:hover{letter-spacing:.35em}
+.nav-links{display:flex;gap:3rem;list-style:none}
+.nav-links a{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(242,234,216,.5);text-decoration:none;position:relative;transition:color .3s;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .35s cubic-bezier(.23,1,.32,1)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
+.nav-cta{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:.75rem 1.6rem;text-decoration:none;transition:background .3s;position:relative;overflow:hidden;white-space:nowrap}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--gold2);transform:translateX(-101%);transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.nav-cta:hover::before{transform:translateX(0)}
+.nav-cta span{position:relative;z-index:1}
+
+/* HERO */
+.hero{height:100vh;min-height:700px;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,9,5,.92) 0%,rgba(11,9,5,.4) 50%,rgba(11,9,5,.85) 100%),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85') center/cover no-repeat;transform:scale(1.08);transition:transform 10s cubic-bezier(.23,1,.32,1);will-change:transform}
+.hero.alive .hero-bg{transform:scale(1)}
+.hero-line{position:absolute;left:4rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold) 30%,var(--gold) 70%,transparent);opacity:0;animation:fadeIn 1s 1.8s ease forwards}
+.hero-label{position:absolute;right:4rem;top:50%;transform:translateY(-50%) rotate(90deg);font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(201,168,76,.6);white-space:nowrap;opacity:0;animation:fadeIn 1s 2s ease forwards}
+.hero-inner{position:relative;padding:0 4rem 0 7rem;max-width:900px}
+.hero-eyebrow{display:flex;align-items:center;gap:1.2rem;font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:slideRight .8s 1.6s cubic-bezier(.23,1,.32,1) forwards}
+.hero-eyebrow i{width:3rem;height:1px;background:var(--gold);display:block}
+.hero-h1{font-family:'Bodoni Moda',serif;font-size:clamp(4rem,9vw,8.5rem);line-height:.88;letter-spacing:-.02em;color:var(--cream);margin-bottom:2.5rem;overflow:hidden}
+.hero-h1 .line{display:block;overflow:hidden}
+.hero-h1 .line span{display:block;transform:translateY(110%)}
+.hero-h1 .line:nth-child(1) span{animation:slideUp .9s 1.8s cubic-bezier(.23,1,.32,1) forwards}
+.hero-h1 .line:nth-child(2) span{animation:slideUp .9s 1.95s cubic-bezier(.23,1,.32,1) forwards;font-style:italic;color:var(--gold)}
+.hero-h1 .line:nth-child(3) span{animation:slideUp .9s 2.1s cubic-bezier(.23,1,.32,1) forwards}
+.hero-desc{font-size:1.05rem;color:rgba(242,234,216,.55);line-height:1.85;max-width:400px;font-weight:300;margin-bottom:3rem;opacity:0;animation:fadeIn .8s 2.5s ease forwards}
+.hero-actions{display:flex;gap:1.5rem;align-items:center;opacity:0;animation:fadeIn .8s 2.7s ease forwards}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:1.1rem 2.8rem;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;background:var(--gold);color:var(--bg);font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:transform .2s cubic-bezier(.23,1,.32,1);white-space:nowrap}
+.btn-gold::before{content:'';position:absolute;inset:0;background:var(--gold2);clip-path:circle(0% at 50% 50%);transition:clip-path .5s cubic-bezier(.23,1,.32,1)}
+.btn-gold:hover::before{clip-path:circle(150% at 50% 50%)}
+.btn-gold span{position:relative;z-index:1}
+.btn-outline{display:inline-flex;align-items:center;padding:1.1rem 2.5rem;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid rgba(201,168,76,.4);color:rgba(242,234,216,.6);text-decoration:none;transition:all .3s;white-space:nowrap}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:3rem;left:7rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:fadeIn 1s 3s ease forwards}
+.scroll-bar{width:1px;height:5rem;background:linear-gradient(to bottom,var(--gold),transparent);position:relative;overflow:hidden}
+.scroll-bar::after{content:'';position:absolute;top:-100%;left:0;width:1px;height:100%;background:var(--gold);animation:scrollDrop 2s 3s ease infinite}
+.hero-scroll span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,168,76,.5);writing-mode:vertical-rl}
+.badge{position:absolute;right:6rem;bottom:4rem;width:90px;height:90px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;text-align:center;opacity:0;animation:fadeIn 1s 3.2s ease forwards}
+.badge-num{font-family:'Bodoni Moda',serif;font-size:1.4rem;color:var(--gold);line-height:1}
+.badge-text{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--gold);padding:.9rem 0;overflow:hidden}
+.marquee-track{display:flex;gap:3rem;animation:marquee 30s linear infinite;white-space:nowrap;width:max-content}
+.marquee-item{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bg);font-weight:500;display:flex;align-items:center;gap:3rem}
+.marquee-item::after{content:'✦';font-size:.5rem;opacity:.5}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.23,1,.32,1)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform .9s cubic-bezier(.23,1,.32,1)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.23,1,.32,1)}
+.reveal.on,.reveal-left.on,.reveal-right.on{opacity:1;transform:none}
+
+/* SECTION COMMON */
+.section-label{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem}
+.section-label i{width:2.5rem;height:1px;background:var(--gold);display:block}
+.section-h2{font-family:'Bodoni Moda',serif;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1.05;letter-spacing:-.01em;color:var(--cream)}
+.section-h2 em{font-style:italic;color:var(--gold)}
+
+/* ABOUT */
+.about{padding:10rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;max-width:1400px;margin:0 auto}
+.about-image-stack{position:relative}
+.about-img1{width:75%;aspect-ratio:3/4;object-fit:cover;margin-left:auto;display:block;position:relative;z-index:2}
+.about-img2{width:55%;aspect-ratio:1;object-fit:cover;position:absolute;left:-10%;bottom:-8%;z-index:3;border:5px solid var(--bg)}
+.about-frame{position:absolute;top:-4%;right:-4%;width:60%;height:60%;border:1px solid var(--border2);z-index:1}
+.about-text{font-family:'EB Garamond',serif;font-size:1.25rem;line-height:1.85;color:rgba(242,234,216,.65);margin-bottom:1.5rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:3rem 0;padding:2.5rem;border:1px solid var(--border);background:rgba(201,168,76,.03)}
+.about-stat-num{font-family:'Bodoni Moda',serif;font-size:2.5rem;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.about-stat-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* MENU */
+.menu-section{padding:10rem 4rem;background:var(--surface)}
+.menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;max-width:1300px;margin-left:auto;margin-right:auto}
+.menu-tabs{display:flex;gap:.5rem;background:rgba(201,168,76,.06);border:1px solid var(--border);padding:.4rem}
+.menu-tab{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;color:var(--muted);transition:all .3s;border:none;background:none;font-family:'Jost',sans-serif}
+.menu-tab.active{background:var(--gold);color:var(--bg)}
+.menu-tab:hover:not(.active){color:var(--cream)}
+.menu-panel{display:none}
+.menu-panel.active{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:1300px;margin:0 auto}
+.menu-item{background:var(--surface);padding:3rem 2.5rem;transition:background .4s;position:relative;overflow:hidden}
+.menu-item::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:translateX(-100%);transition:transform .5s cubic-bezier(.23,1,.32,1)}
+.menu-item:hover{background:var(--surface2)}
+.menu-item:hover::before{transform:translateX(0)}
+.menu-item-num{font-family:'Bodoni Moda',serif;font-size:4rem;color:rgba(201,168,76,.08);line-height:1;margin-bottom:1.5rem}
+.menu-item-cat{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.menu-item-name{font-family:'Bodoni Moda',serif;font-size:1.4rem;color:var(--cream);margin-bottom:1rem;line-height:1.2}
+.menu-item-desc{font-family:'EB Garamond',serif;font-size:1rem;color:rgba(242,234,216,.45);line-height:1.75}
+.menu-item-price{margin-top:2rem;display:flex;justify-content:space-between;align-items:center}
+.menu-item-price span{font-size:.7rem;letter-spacing:.15em;color:rgba(201,168,76,.7)}
+.menu-item-tag{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--border2);color:var(--gold)}
+
+/* GALLERY */
+.gallery-section{padding:10rem 4rem;overflow:hidden}
+.gallery-header{text-align:center;margin-bottom:5rem}
+.gallery-masonry{display:grid;grid-template-columns:1.8fr 1fr 1fr;grid-template-rows:auto auto;gap:1.5rem;max-width:1300px;margin:0 auto}
+.g-item{overflow:hidden;position:relative}
+.g-item:first-child{grid-row:span 2}
+.g-item img{width:100%;height:100%;object-fit:cover;display:block;min-height:220px;transition:transform .9s cubic-bezier(.23,1,.32,1),filter .9s ease;filter:brightness(.85) saturate(.9)}
+.g-item:first-child img{min-height:520px}
+.g-item:hover img{transform:scale(1.07);filter:brightness(.7) saturate(1.1)}
+.g-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:2rem;background:linear-gradient(transparent 40%,rgba(11,9,5,.8));opacity:0;transition:opacity .4s}
+.g-item:hover .g-overlay{opacity:1}
+.g-caption{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+
+/* EXPERIENCE */
+.experience-section{padding:10rem 4rem;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%)}
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1300px;margin:4rem auto 0}
+.exp-card{padding:2.5rem 2rem;border:1px solid var(--border);background:rgba(201,168,76,.02);transition:border-color .4s,transform .4s,background .4s;position:relative;overflow:hidden}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.23,1,.32,1)}
+.exp-card:hover{border-color:var(--border2);transform:translateY(-6px);background:rgba(201,168,76,.05)}
+.exp-card:hover::before{transform:scaleX(1)}
+.exp-icon{width:3rem;height:3rem;margin-bottom:2rem;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold)}
+.exp-card-title{font-family:'Bodoni Moda',serif;font-size:1.15rem;color:var(--cream);margin-bottom:.75rem}
+.exp-card-desc{font-size:.85rem;color:rgba(242,234,216,.4);line-height:1.75}
+
+/* TESTIMONIALS */
+.testimonials{padding:10rem 4rem;overflow:hidden}
+.testi-header{text-align:center;margin-bottom:5rem}
+.testi-track{display:flex;gap:1.5rem;max-width:1300px;margin:0 auto}
+.testi-card{flex:1;padding:3rem;border:1px solid var(--border);background:var(--surface);position:relative;transition:border-color .4s,transform .4s}
+.testi-card::before{content:'"';position:absolute;top:-1.5rem;left:2.5rem;font-family:'Bodoni Moda',serif;font-size:8rem;color:var(--gold);line-height:1;opacity:.12}
+.testi-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.stars{color:var(--gold);font-size:.75rem;letter-spacing:.2em;margin-bottom:1.5rem}
+.testi-text{font-family:'EB Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(242,234,216,.7);line-height:1.85;margin-bottom:2rem}
+.testi-author{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.8rem}
+.testi-author::before{content:'';width:1.5rem;height:1px;background:var(--gold);display:block}
+
+/* RESERVE */
+.reserve-section{padding:0;display:grid;grid-template-columns:1fr 1fr}
+.reserve-left{padding:8rem max(4rem,6vw);background:linear-gradient(135deg,#0f0c08 0%,var(--surface2) 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.reserve-left::before{content:'';position:absolute;top:-20%;right:-20%;width:50%;height:50%;border:1px solid var(--border);border-radius:50%}
+.reserve-h2{font-family:'Bodoni Moda',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);color:var(--cream);line-height:1.1;margin-bottom:1.5rem}
+.reserve-h2 em{font-style:italic;color:var(--gold)}
+.reserve-sub{font-family:'EB Garamond',serif;font-size:1.1rem;color:rgba(242,234,216,.5);line-height:1.85;margin-bottom:3rem}
+.reserve-info{display:flex;flex-direction:column;gap:1.2rem}
+.reserve-info-row{display:flex;align-items:flex-start;gap:1rem;font-size:.85rem;color:rgba(242,234,216,.45);line-height:1.5}
+.reserve-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.55rem}
+.reserve-info-row a{color:inherit;text-decoration:none;transition:color .3s}
+.reserve-info-row a:hover{color:var(--gold)}
+.reserve-right{padding:8rem max(4rem,6vw);display:flex;flex-direction:column;justify-content:center;background:var(--surface)}
+.form-title{font-family:'Bodoni Moda',serif;font-size:1.8rem;color:var(--cream);margin-bottom:2.5rem}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-full{grid-column:span 2}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(201,168,76,.25);color:var(--cream);padding:.85rem 0;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;outline:none;transition:border-color .3s;appearance:none;width:100%}
+.field input::placeholder,.field textarea::placeholder{color:rgba(242,234,216,.2)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field select option{background:var(--surface2);color:var(--cream)}
+.field textarea{resize:none;height:80px}
+.form-submit{margin-top:2rem;background:var(--gold);color:var(--bg);border:none;padding:1.1rem 2.5rem;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;align-self:flex-start}
+.form-submit::before{content:'';position:absolute;inset:0;background:var(--gold2);clip-path:circle(0% at 50% 50%);transition:clip-path .5s cubic-bezier(.23,1,.32,1)}
+.form-submit:hover::before{clip-path:circle(150% at 50% 50%)}
+.form-submit span{position:relative;z-index:1}
+.form-note{margin-top:1.2rem;font-size:.75rem;color:rgba(242,234,216,.25);line-height:1.7}
+
+/* LOCATIONS */
+.locations{padding:7rem 4rem;background:var(--bg)}
+.locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1300px;margin:4rem auto 0}
+.loc-card{border:1px solid var(--border);padding:3rem;transition:border-color .4s,transform .4s}
+.loc-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.loc-city{font-family:'Bodoni Moda',serif;font-size:2rem;color:var(--gold);margin-bottom:.5rem}
+.loc-addr{font-size:.85rem;color:rgba(242,234,216,.45);line-height:1.6;margin-bottom:2rem}
+.loc-phone{font-size:.8rem;letter-spacing:.12em;color:rgba(242,234,216,.5);text-decoration:none;display:block;margin-bottom:1.5rem;transition:color .3s}
+.loc-phone:hover{color:var(--gold)}
+.loc-hours{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding-top:1.5rem;border-top:1px solid var(--border)}
+
+/* FOOTER */
+footer{background:#070604;padding:5rem 4rem 2.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(201,168,76,.1);max-width:1300px;margin:0 auto}
+.footer-brand{font-family:'Bodoni Moda',serif;font-size:2.2rem;letter-spacing:.25em;color:var(--gold);margin-bottom:1.25rem}
+.footer-tagline{font-family:'EB Garamond',serif;font-size:1rem;color:rgba(242,234,216,.3);font-style:italic;line-height:1.8;max-width:260px}
+.footer-col-title{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.75rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+.footer-links a{font-size:.85rem;color:rgba(242,234,216,.35);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:rgba(242,234,216,.8)}
+.footer-bottom{padding-top:2rem;display:flex;justify-content:space-between;align-items:center;max-width:1300px;margin:0 auto}
+.footer-copy{font-size:.72rem;color:rgba(242,234,216,.15);letter-spacing:.05em}
+.footer-socials{display:flex;gap:2rem}
+.footer-socials a{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,234,216,.25);text-decoration:none;transition:color .3s}
+.footer-socials a:hover{color:var(--gold)}
+
+/* TOAST */
+.toast{position:fixed;bottom:2.5rem;right:2.5rem;background:var(--gold);color:var(--bg);padding:1.1rem 2rem;font-size:.8rem;letter-spacing:.1em;font-weight:500;z-index:1000;transform:translateY(6rem) scale(.95);opacity:0;transition:all .5s cubic-bezier(.23,1,.32,1);pointer-events:none}
+.toast.show{transform:translateY(0) scale(1);opacity:1}
+
+/* URL BANNER */
+.url-banner{position:fixed;bottom:2.5rem;left:2.5rem;background:rgba(11,9,5,.9);border:1px solid var(--border2);backdrop-filter:blur(12px);padding:.85rem 1.5rem;z-index:400;display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeIn .8s 3.5s ease forwards}
+.url-dot{width:6px;height:6px;border-radius:50%;background:#2e7d3a;flex-shrink:0;animation:pulse 2s ease infinite}
+.url-text{font-size:.68rem;letter-spacing:.15em;color:rgba(242,234,216,.5)}
+.url-link{font-size:.68rem;letter-spacing:.08em;color:var(--gold);font-family:'Bodoni Moda',serif}
+
+/* LANG TRANSITION */
+[data-en],[data-uk]{transition:opacity .2s ease}
+body.switching [data-en],body.switching [data-uk]{opacity:0}
+
+/* ANIMATIONS */
+@keyframes slideUp{to{transform:translateY(0)}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes lineGrow{to{width:6rem}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes scrollDrop{0%{top:-100%}100%{top:100%}}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(46,125,58,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(46,125,58,0)}}
+</style>
+</head>
+<body>
+
+<div class="c-dot" id="dot"></div>
+<div class="c-ring" id="ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-word"><span>CHAPTER</span></div>
+  <div class="loader-line"></div>
+  <div class="loader-sub" data-en="Fine Mediterranean Dining · Kyiv" data-uk="Середземноморська Кухня · Київ">Fine Mediterranean Dining · Kyiv</div>
+</div>
+
+<!-- URL BADGE -->
+<div class="url-banner">
+  <div class="url-dot"></div>
+  <span class="url-text" data-en="Live at" data-uk="Сайт">Live at</span>
+  <span class="url-link">chapter-kyiv.com.ua</span>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">CHAPTER</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-en="About" data-uk="Про нас">About</a></li>
+    <li><a href="#menu" data-en="Menu" data-uk="Меню">Menu</a></li>
+    <li><a href="#gallery" data-en="Gallery" data-uk="Галерея">Gallery</a></li>
+    <li><a href="#experience" data-en="Experience" data-uk="Враження">Experience</a></li>
+    <li><a href="#reserve" data-en="Reserve" data-uk="Бронювання">Reserve</a></li>
+  </ul>
+  <div class="nav-right">
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENG</button>
+      <div class="lang-divider-v"></div>
+      <button class="lang-btn" id="btn-uk" onclick="setLang('uk')">УКР</button>
+    </div>
+    <a href="#reserve" class="nav-cta"><span data-en="Book a Table" data-uk="Забронювати стіл">Book a Table</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-label" data-en="Podil · Kyiv · Since 2020" data-uk="Поділ · Київ · З 2020">Podil · Kyiv · Since 2020</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><i></i><span data-en="Mediterranean Fine Dining" data-uk="Середземноморська Висока Кухня">Mediterranean Fine Dining</span></div>
+    <h1 class="hero-h1">
+      <span class="line"><span data-en="Every Meal" data-uk="Кожна Страва">Every Meal</span></span>
+      <span class="line"><span data-en="A New" data-uk="Нова">A New</span></span>
+      <span class="line"><span data-en="Chapter." data-uk="Глава.">Chapter.</span></span>
+    </h1>
+    <p class="hero-desc" data-en="The restaurant you visit for the taste — and return to for the feeling. Mediterranean cuisine reimagined in the heart of Podil." data-uk="Ресторан, до якого приходять заради смаку — і повертаються заради відчуттів. Середземноморська кухня у серці Подолу.">The restaurant you visit for the taste — and return to for the feeling. Mediterranean cuisine reimagined in the heart of Podil.</p>
+    <div class="hero-actions">
+      <a href="#reserve" class="btn-gold"><span data-en="Reserve a Table" data-uk="Забронювати стіл">Reserve a Table</span></a>
+      <a href="#menu" class="btn-outline"><span data-en="Explore Menu" data-uk="Переглянути меню">Explore Menu</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span data-en="Scroll to discover" data-uk="Гортайте донизу">Scroll to discover</span>
+  </div>
+  <div class="badge">
+    <div class="badge-num">4.7★</div>
+    <div class="badge-text" data-en="Google · 1K+" data-uk="Google · 1К+">Google · 1K+</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item" data-en="Salmon Wellington" data-uk="Лосось Веллінгтон">Salmon Wellington</div>
+    <div class="marquee-item" data-en="Chocolate Fondant" data-uk="Шоколадний Фондан">Chocolate Fondant</div>
+    <div class="marquee-item" data-en="Grilled Octopus" data-uk="Смажений Осьмоніг">Grilled Octopus</div>
+    <div class="marquee-item" data-en="Great Cocktails" data-uk="Чудові Коктейлі">Great Cocktails</div>
+    <div class="marquee-item" data-en="Pasta Ritual · Every Monday" data-uk="Паста Рітуал · Щопонеділка">Pasta Ritual · Every Monday</div>
+    <div class="marquee-item" data-en="Dogs Welcome" data-uk="Можна з Собаками">Dogs Welcome</div>
+    <div class="marquee-item" data-en="Breakfast Until 12:00" data-uk="Сніданки до 12:00">Breakfast Until 12:00</div>
+    <div class="marquee-item" data-en="Set Lunch Menu" data-uk="Сет-Ланч">Set Lunch Menu</div>
+    <div class="marquee-item" data-en="Salmon Wellington" data-uk="Лосось Веллінгтон">Salmon Wellington</div>
+    <div class="marquee-item" data-en="Chocolate Fondant" data-uk="Шоколадний Фондан">Chocolate Fondant</div>
+    <div class="marquee-item" data-en="Grilled Octopus" data-uk="Смажений Осьмоніг">Grilled Octopus</div>
+    <div class="marquee-item" data-en="Great Cocktails" data-uk="Чудові Коктейлі">Great Cocktails</div>
+    <div class="marquee-item" data-en="Pasta Ritual · Every Monday" data-uk="Паста Рітуал · Щопонеділка">Pasta Ritual · Every Monday</div>
+    <div class="marquee-item" data-en="Dogs Welcome" data-uk="Можна з Собаками">Dogs Welcome</div>
+    <div class="marquee-item" data-en="Breakfast Until 12:00" data-uk="Сніданки до 12:00">Breakfast Until 12:00</div>
+    <div class="marquee-item" data-en="Set Lunch Menu" data-uk="Сет-Ланч">Set Lunch Menu</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image-stack reveal-left">
+    <img class="about-img1" src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=80" alt="Chef">
+    <img class="about-img2" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80" alt="Ambience">
+    <div class="about-frame"></div>
+  </div>
+  <div class="reveal-right">
+    <div class="section-label"><i></i><span data-en="Our Philosophy" data-uk="Наша Філософія">Our Philosophy</span></div>
+    <h2 class="section-h2" style="margin-bottom:2rem">
+      <span data-en="A Restaurant You Come For the Taste —" data-uk="Ресторан, до якого приходять заради смаку —">A Restaurant You Come For the Taste —</span><br>
+      <em data-en="Stay For the Feeling" data-uk="і залишаються заради відчуттів">Stay For the Feeling</em>
+    </h2>
+    <p class="about-text" data-en="CHAPTER was born from a belief that dining is more than sustenance. It is a pause. A moment held between strangers who leave as friends, between ordinary Tuesdays and evenings that become stories." data-uk="CHAPTER народився з переконання, що харчування — це більше, ніж їжа. Це пауза. Момент між незнайомцями, які йдуть друзями — між звичайними вівторками й вечорами, що стають историями.">CHAPTER was born from a belief that dining is more than sustenance. It is a pause. A moment held between strangers who leave as friends, between ordinary Tuesdays and evenings that become stories.</p>
+    <p class="about-text" data-en="Our Mediterranean kitchen draws from the Adriatic coast, the Levantine table and the richness of Ukrainian seasons — ingredients treated with honesty, plated with intention." data-uk="Наша середземноморська кухня черпає натхнення з Адріатичного узбережжя, левантійського столу та багатства українських сезонів — інгредієнти з чесністю, подача з наміром.">Our Mediterranean kitchen draws from the Adriatic coast, the Levantine table and the richness of Ukrainian seasons — ingredients treated with honesty, plated with intention.</p>
+    <div class="about-stats">
+      <div><div class="about-stat-num">4.7★</div><div class="about-stat-label" data-en="Google Rating" data-uk="Рейтинг Google">Google Rating</div></div>
+      <div><div class="about-stat-num">1,000+</div><div class="about-stat-label" data-en="Guest Reviews" data-uk="Відгуків гостей">Guest Reviews</div></div>
+      <div><div class="about-stat-num">36K</div><div class="about-stat-label" data-en="Instagram Community" data-uk="Спільнота Instagram">Instagram Community</div></div>
+      <div><div class="about-stat-num">3</div><div class="about-stat-label" data-en="Cities · Kyiv · Lviv · Vinnytsia" data-uk="Міста · Київ · Львів · Вінниця">Cities · Kyiv · Lviv · Vinnytsia</div></div>
+    </div>
+    <div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+      <a href="#reserve" class="btn-gold"><span data-en="Reserve a Table" data-uk="Забронювати стіл">Reserve a Table</span></a>
+      <a href="tel:0968662323" style="font-size:.8rem;letter-spacing:.1em;color:var(--muted);text-decoration:none;transition:color .3s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">096 866 2323</a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header reveal">
+    <div>
+      <div class="section-label"><i></i><span data-en="Signatures" data-uk="Фірмові страви">Signatures</span></div>
+      <h2 class="section-h2"><span data-en="Dishes People" data-uk="Страви, заради яких">Dishes People</span><br><em data-en="Come Back For" data-uk="повертаються знову">Come Back For</em></h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchTab(this,'all')" data-en="All" data-uk="Усі">All</button>
+      <button class="menu-tab" onclick="switchTab(this,'breakfast')" data-en="Breakfast" data-uk="Сніданок">Breakfast</button>
+      <button class="menu-tab" onclick="switchTab(this,'mains')" data-en="Mains" data-uk="Основні">Mains</button>
+      <button class="menu-tab" onclick="switchTab(this,'desserts')" data-en="Desserts" data-uk="Десерти">Desserts</button>
+    </div>
+  </div>
+
+  <div class="menu-panel active" id="tab-all">
+    <div class="menu-item reveal">
+      <div class="menu-item-num">01</div>
+      <div class="menu-item-cat" data-en="Signature · Main" data-uk="Фірмова · Основна">Signature · Main</div>
+      <div class="menu-item-name" data-en="Salmon Wellington" data-uk="Лосось Веллінгтон">Salmon Wellington</div>
+      <div class="menu-item-desc" data-en="Atlantic salmon in golden pastry, wilted spinach, dill crème fraîche, warm beurre blanc. The dish that defines us." data-uk="Атлантичний лосось у золотистому тісті, шпинат, кропова крем-фреш, теплий бер-блан. Страва, яка нас визначає.">Atlantic salmon in golden pastry, wilted spinach, dill crème fraîche, warm beurre blanc. The dish that defines us.</div>
+      <div class="menu-item-price"><span data-en="★ Most Ordered" data-uk="★ Найбільш замовляють">★ Most Ordered</span><span class="menu-item-tag" data-en="Signature" data-uk="Фірмова">Signature</span></div>
+    </div>
+    <div class="menu-item reveal" style="transition-delay:.08s">
+      <div class="menu-item-num">02</div>
+      <div class="menu-item-cat" data-en="Sharing · Starter" data-uk="На стіл · Закуска">Sharing · Starter</div>
+      <div class="menu-item-name" data-en="Eggplant with Shrimp" data-uk="Баклажан з Креветками">Eggplant with Shrimp</div>
+      <div class="menu-item-desc" data-en="Roasted aubergine, tiger prawns, smoked paprika aioli, pomegranate molasses. Mediterranean soul, Ukrainian roots." data-uk="Запечений баклажан, тигрові креветки, копчений паприковий айолі, гранатова меляса. Середземноморська душа, українське коріння.">Roasted aubergine, tiger prawns, smoked paprika aioli, pomegranate molasses. Mediterranean soul, Ukrainian roots.</div>
+      <div class="menu-item-price"><span data-en="★ Chef's Pick" data-uk="★ Вибір шефа">★ Chef's Pick</span><span class="menu-item-tag" data-en="Share" data-uk="На стіл">Share</span></div>
+    </div>
+    <div class="menu-item reveal" style="transition-delay:.16s">
+      <div class="menu-item-num">03</div>
+      <div class="menu-item-cat" data-en="Dessert" data-uk="Десерт">Dessert</div>
+      <div class="menu-item-name" data-en="Chocolate Fondant" data-uk="Шоколадний Фондан">Chocolate Fondant</div>
+      <div class="menu-item-desc" data-en="Dark chocolate centre, salted caramel ice cream, praline dust. The dish no table leaves without ordering twice." data-uk="Центр із темного шоколаду, морозиво з солоною карамеллю, пудра з пралін. Жоден стіл не йде, не замовивши двічі.">Dark chocolate centre, salted caramel ice cream, praline dust. The dish no table leaves without ordering twice.</div>
+      <div class="menu-item-price"><span data-en="★ Guest Favourite" data-uk="★ Улюбленець гостей">★ Guest Favourite</span><span class="menu-item-tag" data-en="Dessert" data-uk="Десерт">Dessert</span></div>
+    </div>
+    <div class="menu-item reveal" style="transition-delay:.04s">
+      <div class="menu-item-num">04</div>
+      <div class="menu-item-cat" data-en="Breakfast · Until 12:00" data-uk="Сніданок · до 12:00">Breakfast · Until 12:00</div>
+      <div class="menu-item-name" data-en="Poached Eggs · Guacamole & Salmon" data-uk="Яйця Пашот з Гуакамоле та Лососем">Poached Eggs · Guacamole & Salmon</div>
+      <div class="menu-item-desc" data-en="Silky poached eggs on avocado purée, house-cured salmon, sourdough toast, micro herbs." data-uk="Шовковисті яйця пашот на пюре з авокадо, лосось власного засолу, тост на заквасці, мікро-зелень.">Silky poached eggs on avocado purée, house-cured salmon, sourdough toast, micro herbs.</div>
+      <div class="menu-item-price"><span data-en="Daily Breakfast" data-uk="Щоденний сніданок">Daily Breakfast</span><span class="menu-item-tag">A.M.</span></div>
+    </div>
+    <div class="menu-item reveal" style="transition-delay:.12s">
+      <div class="menu-item-num">05</div>
+      <div class="menu-item-cat" data-en="Soup · Seasonal" data-uk="Суп · Сезонний">Soup · Seasonal</div>
+      <div class="menu-item-name" data-en="Pumpkin Soup" data-uk="Гарбузовий Суп">Pumpkin Soup</div>
+      <div class="menu-item-desc" data-en="Slow-roasted Hokkaido pumpkin, coconut cream, toasted seeds, ginger oil. Warmth in every spoonful." data-uk="Повільно запечений гарбуз Хоккайдо, кокосові вершки, підсмажене насіння, імбирна олія. Тепло в кожній ложці.">Slow-roasted Hokkaido pumpkin, coconut cream, toasted seeds, ginger oil. Warmth in every spoonful.</div>
+      <div class="menu-item-price"><span data-en="Seasonal" data-uk="Сезонний">Seasonal</span><span class="menu-item-tag" data-en="Veg" data-uk="Вег">Veg</span></div>
+    </div>
+    <div class="menu-item reveal" style="transition-delay:.2s">
+      <div class="menu-item-num">06</div>
+      <div class="menu-item-cat" data-en="Fire-grilled · Main" data-uk="На вугіллі · Основна">Fire-grilled · Main</div>
+      <div class="menu-item-name" data-en="Grilled Octopus" data-uk="Смажений Осьмоніг">Grilled Octopus</div>
+      <div class="menu-item-desc" data-en="Charred whole tentacle, lemon oil, sea salt, chimichurri, roasted cherry tomatoes. Fire and sea in perfect harmony." data-uk="Обвуглений цілий щупалець, лимонна олія, морська сіль, чімічурі, запечені черрі-томати. Вогонь і море в ідеальній гармонії.">Charred whole tentacle, lemon oil, sea salt, chimichurri, roasted cherry tomatoes. Fire and sea in perfect harmony.</div>
+      <div class="menu-item-price"><span data-en="★ Top Rated" data-uk="★ Найвища оцінка">★ Top Rated</span><span class="menu-item-tag" data-en="Sea" data-uk="Море">Sea</span></div>
+    </div>
+  </div>
+
+  <div class="menu-panel" id="tab-breakfast">
+    <div class="menu-item reveal"><div class="menu-item-num">01</div><div class="menu-item-cat" data-en="Classic Breakfast" data-uk="Класичний сніданок">Classic Breakfast</div><div class="menu-item-name" data-en="English Breakfast" data-uk="Англійський Сніданок">English Breakfast</div><div class="menu-item-desc" data-en="Two eggs any style, streaky bacon, grilled tomato, sautéed mushrooms, buttered sourdough." data-uk="Два яйця будь-яким способом, бекон, запечений томат, гриби, хліб на заквасці з маслом.">Two eggs any style, streaky bacon, grilled tomato, sautéed mushrooms, buttered sourdough.</div><div class="menu-item-price"><span data-en="Until 12:00" data-uk="До 12:00">Until 12:00</span><span class="menu-item-tag">A.M.</span></div></div>
+    <div class="menu-item reveal" style="transition-delay:.08s"><div class="menu-item-num">02</div><div class="menu-item-cat" data-en="Breakfast · Signature" data-uk="Сніданок · Фірмовий">Breakfast · Signature</div><div class="menu-item-name" data-en="Poached Eggs · Guacamole & Salmon" data-uk="Яйця Пашот з Гуакамоле та Лососем">Poached Eggs · Guacamole & Salmon</div><div class="menu-item-desc" data-en="Silky poached eggs on avocado purée, house-cured salmon, sourdough toast, micro herbs." data-uk="Яйця пашот на пюре з авокадо, лосось власного засолу, тост на заквасці, мікро-зелень.">Silky poached eggs on avocado purée, house-cured salmon, sourdough toast, micro herbs.</div><div class="menu-item-price"><span data-en="★ Most Ordered" data-uk="★ Найпопулярніший">★ Most Ordered</span><span class="menu-item-tag">A.M.</span></div></div>
+    <div class="menu-item reveal" style="transition-delay:.16s"><div class="menu-item-num">03</div><div class="menu-item-cat" data-en="Breakfast · Sweet" data-uk="Сніданок · Солодкий">Breakfast · Sweet</div><div class="menu-item-name" data-en="Syrnyky" data-uk="Сирники">Syrnyky</div><div class="menu-item-desc" data-en="Ukrainian cottage cheese pancakes, berry compote, sour cream, fresh mint. A sweet start to any morning." data-uk="Українські сирники з сиру, ягідний компот, сметана, свіжа м'ята. Солодкий початок будь-якого ранку.">Ukrainian cottage cheese pancakes, berry compote, sour cream, fresh mint. A sweet start to any morning.</div><div class="menu-item-price"><span data-en="Ukrainian Classic" data-uk="Українська Класика">Ukrainian Classic</span><span class="menu-item-tag" data-en="Sweet" data-uk="Солодке">Sweet</span></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-mains">
+    <div class="menu-item reveal"><div class="menu-item-num">01</div><div class="menu-item-cat" data-en="Signature · Main" data-uk="Фірмова · Основна">Signature · Main</div><div class="menu-item-name" data-en="Salmon Wellington" data-uk="Лосось Веллінгтон">Salmon Wellington</div><div class="menu-item-desc" data-en="Atlantic salmon in golden pastry, wilted spinach, dill crème fraîche, warm beurre blanc." data-uk="Атлантичний лосось у золотистому тісті, шпинат, кропова крем-фреш, теплий бер-блан.">Atlantic salmon in golden pastry, wilted spinach, dill crème fraîche, warm beurre blanc.</div><div class="menu-item-price"><span data-en="★ Signature" data-uk="★ Фірмова">★ Signature</span><span class="menu-item-tag" data-en="Sea" data-uk="Море">Sea</span></div></div>
+    <div class="menu-item reveal" style="transition-delay:.08s"><div class="menu-item-num">02</div><div class="menu-item-cat" data-en="Fire-grilled" data-uk="На вугіллі">Fire-grilled</div><div class="menu-item-name" data-en="Grilled Octopus" data-uk="Смажений Осьмоніг">Grilled Octopus</div><div class="menu-item-desc" data-en="Charred whole tentacle, lemon oil, sea salt, chimichurri, roasted cherry tomatoes." data-uk="Обвуглений щупалець, лимонна олія, морська сіль, чімічурі, запечені черрі-томати.">Charred whole tentacle, lemon oil, sea salt, chimichurri, roasted cherry tomatoes.</div><div class="menu-item-price"><span data-en="★ Top Rated" data-uk="★ Найвища оцінка">★ Top Rated</span><span class="menu-item-tag" data-en="Sea" data-uk="Море">Sea</span></div></div>
+    <div class="menu-item reveal" style="transition-delay:.16s"><div class="menu-item-num">03</div><div class="menu-item-cat" data-en="Pasta · Monday Ritual" data-uk="Паста · Понеділковий Ритуал">Pasta · Monday Ritual</div><div class="menu-item-name" data-en="Agnolotti" data-uk="Аньолотті">Agnolotti</div><div class="menu-item-desc" data-en="Thin pasta, rich filling, perfect balance. Every Monday with a glass of white wine." data-uk="Тонке тісто, насичена начинка, ідеальний баланс. Щопонеділка з келихом білого вина.">Thin pasta, rich filling, perfect balance. Every Monday with a glass of white wine.</div><div class="menu-item-price"><span data-en="Monday Special" data-uk="Понеділок">Monday Special</span><span class="menu-item-tag" data-en="Pasta" data-uk="Паста">Pasta</span></div></div>
+  </div>
+
+  <div class="menu-panel" id="tab-desserts">
+    <div class="menu-item reveal"><div class="menu-item-num">01</div><div class="menu-item-cat" data-en="Dessert · Hot" data-uk="Десерт · Гарячий">Dessert · Hot</div><div class="menu-item-name" data-en="Chocolate Fondant" data-uk="Шоколадний Фондан">Chocolate Fondant</div><div class="menu-item-desc" data-en="Dark chocolate centre, salted caramel ice cream, praline dust." data-uk="Центр із темного шоколаду, морозиво з солоною карамеллю, пудра з пралін.">Dark chocolate centre, salted caramel ice cream, praline dust.</div><div class="menu-item-price"><span data-en="★ Guest Favourite" data-uk="★ Улюбленець">★ Guest Favourite</span><span class="menu-item-tag" data-en="Hot" data-uk="Гарячий">Hot</span></div></div>
+    <div class="menu-item reveal" style="transition-delay:.08s"><div class="menu-item-num">02</div><div class="menu-item-cat" data-en="Dessert · Cold" data-uk="Десерт · Холодний">Dessert · Cold</div><div class="menu-item-name" data-en="Seasonal Sorbet" data-uk="Сезонний Сорбет">Seasonal Sorbet</div><div class="menu-item-desc" data-en="Fresh fruit sorbet, seasonal berries, edible flowers, citrus tuile." data-uk="Свіжий фруктовий сорбет, сезонні ягоди, їстівні квіти, цитрусова туіль.">Fresh fruit sorbet, seasonal berries, edible flowers, citrus tuile.</div><div class="menu-item-price"><span data-en="Light Finish" data-uk="Легке завершення">Light Finish</span><span class="menu-item-tag" data-en="Cold" data-uk="Холодний">Cold</span></div></div>
+  </div>
+
+  <div style="text-align:center;margin-top:4rem" class="reveal">
+    <a href="https://expz.menu" target="_blank" style="font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:.3rem" data-en="View Full Menu →" data-uk="Переглянути повне меню →">View Full Menu →</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-header reveal">
+    <div class="section-label" style="justify-content:center"><i></i><span data-en="Gallery" data-uk="Галерея">Gallery</span><i></i></div>
+    <h2 class="section-h2" style="text-align:center"><span data-en="Crafted with" data-uk="Створено з">Crafted with</span> <em data-en="Intention" data-uk="Наміром">Intention</em></h2>
+  </div>
+  <div class="gallery-masonry reveal">
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Interior"><div class="g-overlay"><span class="g-caption" data-en="The Dining Room · Podil" data-uk="Зал · Поділ">The Dining Room · Podil</span></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=500&q=80" alt="Breakfast"><div class="g-overlay"><span class="g-caption" data-en="Morning Plates" data-uk="Ранкові страви">Morning Plates</span></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&q=80" alt="Cocktails"><div class="g-overlay"><span class="g-caption" data-en="Cocktail Programme" data-uk="Коктейльна програма">Cocktail Programme</span></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&q=80" alt="Kitchen"><div class="g-overlay"><span class="g-caption" data-en="The Kitchen" data-uk="Кухня">The Kitchen</span></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80" alt="Signature dish"><div class="g-overlay"><span class="g-caption" data-en="Signature Plates" data-uk="Фірмові страви">Signature Plates</span></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="reveal" style="text-align:center;max-width:1300px;margin:0 auto">
+    <div class="section-label" style="justify-content:center"><i></i><span data-en="The Experience" data-uk="Враження">The Experience</span><i></i></div>
+    <h2 class="section-h2"><span data-en="More Than a Meal —" data-uk="Більше ніж їжа —">More Than a Meal —</span><br><em data-en="A Memory" data-uk="Спогад">A Memory</em></h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal"><div class="exp-icon">🐾</div><div class="exp-card-title" data-en="Dogs Welcome" data-uk="Можна з Собаками">Dogs Welcome</div><p class="exp-card-desc" data-en="Your four-legged companion is a valued guest. CHAPTER is proudly dog-friendly — all family members welcome." data-uk="Ваш чотирилапий друг — бажаний гість. CHAPTER з гордістю є дружнім до собак закладом — усі члени родини вітаються.">Your four-legged companion is a valued guest. CHAPTER is proudly dog-friendly — all family members welcome.</p></div>
+    <div class="exp-card reveal" style="transition-delay:.1s"><div class="exp-icon">🍸</div><div class="exp-card-title" data-en="Signature Cocktails" data-uk="Фірмові Коктейлі">Signature Cocktails</div><p class="exp-card-desc" data-en="A bar programme built on Mediterranean botanicals, Ukrainian spirits and seasonal produce. Every glass is a discovery." data-uk="Барна програма на основі середземноморських ботанічних рослин, українських спиртних напоїв і сезонної продукції. Кожен келих — відкриття.">A bar programme built on Mediterranean botanicals, Ukrainian spirits and seasonal produce. Every glass is a discovery.</p></div>
+    <div class="exp-card reveal" style="transition-delay:.2s"><div class="exp-icon">🌅</div><div class="exp-card-title" data-en="Open Daily 10–22" data-uk="Щодня 10:00–22:00">Open Daily 10–22</div><p class="exp-card-desc" data-en="From slow breakfast mornings to candlelit dinners — CHAPTER welcomes you from first light to evening warmth." data-uk="Від повільних ранкових сніданків до вечерь при свічках — CHAPTER вітає вас від ранкового світла до вечірнього тепла.">From slow breakfast mornings to candlelit dinners — CHAPTER welcomes you from first light to evening warmth.</p></div>
+    <div class="exp-card reveal" style="transition-delay:.3s"><div class="exp-icon">🍝</div><div class="exp-card-title" data-en="Pasta Ritual · Monday" data-uk="Паста Рітуал · Понеділок">Pasta Ritual · Monday</div><p class="exp-card-desc" data-en="Every Monday: choose your pasta, we add a glass of white wine. A ritual worth building your week around." data-uk="Щопонеділка: оберіть свою пасту — ми додаємо келих білого вина. Ритуал, навколо якого варто будувати тиждень.">Every Monday: choose your pasta, we add a glass of white wine. A ritual worth building your week around.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="testi-header reveal">
+    <div class="section-label" style="justify-content:center"><i></i><span data-en="Guest Voices" data-uk="Голоси Гостей">Guest Voices</span><i></i></div>
+    <h2 class="section-h2"><span data-en="What People" data-uk="Що кажуть">What People</span> <em data-en="Say" data-uk="Гості">Say</em></h2>
+  </div>
+  <div class="testi-track">
+    <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text" data-en='"The salmon wellington was unlike anything I've had in Kyiv. Staff who feel like old friends. I came back four times last month."' data-uk='"Лосось Веллінгтон — це щось, чого я не куштувала в Києві. Персонал, наче старі друзі. Я поверталася чотири рази минулого місяця."'>"The salmon wellington was unlike anything I've had in Kyiv. Staff who feel like old friends. I came back four times last month."</p><div class="testi-author" data-en="Yana D. · Google Review" data-uk="Яна Д. · Відгук Google">Yana D. · Google Review</div></div>
+    <div class="testi-card reveal" style="transition-delay:.1s"><div class="stars">★★★★★</div><p class="testi-text" data-en='"The octopus is extraordinary. The chocolate fondant is non-negotiable. The cocktails are among the best in the city."' data-uk='"Осьмоніг — це щось неймовірне. Шоколадний фондан — обов'язковий. Коктейлі — одні з найкращих у місті."'>"The octopus is extraordinary. The chocolate fondant is non-negotiable. The cocktails are among the best in the city."</p><div class="testi-author" data-en="Vitalii · Google Review" data-uk="Віталій · Відгук Google">Vitalii · Google Review</div></div>
+    <div class="testi-card reveal" style="transition-delay:.2s"><div class="stars">★★★★★</div><p class="testi-text" data-en='"Every detail was considered — the lighting, the music, the plating. This is how a restaurant makes you feel special without trying too hard."' data-uk='"Кожна деталь продумана — освітлення, музика, подача. Саме так ресторан робить вас особливим без зайвих зусиль."'>"Every detail was considered — the lighting, the music, the plating. This is how a restaurant makes you feel special without trying too hard."</p><div class="testi-author" data-en="Lena S. · Google Review" data-uk="Лєна С. · Відгук Google">Lena S. · Google Review</div></div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reserve-section" id="reserve">
+  <div class="reserve-left reveal-left">
+    <div class="section-label"><i></i><span data-en="Reservations" data-uk="Бронювання">Reservations</span></div>
+    <h2 class="reserve-h2"><span data-en="Begin Your" data-uk="Розпочніть Вашу">Begin Your</span><br><em data-en="Next Chapter" data-uk="Наступну Главу">Next Chapter</em></h2>
+    <p class="reserve-sub" data-en="A table reserved is a story already begun. We look forward to welcoming you to Verkhnii Val — one of Kyiv's most storied streets." data-uk="Забронований стіл — це вже початок історії. Чекаємо на вас на Верхньому Валу — одній з найколоритніших вулиць Києва.">A table reserved is a story already begun. We look forward to welcoming you to Verkhnii Val — one of Kyiv's most storied streets.</p>
+    <div class="reserve-info">
+      <div class="reserve-info-row"><div class="reserve-dot"></div><span data-en="Verkhnii Val St, 10 · Podil · Kyiv 04071" data-uk="вул. Верхній Вал, 10 · Поділ · Київ 04071">Verkhnii Val St, 10 · Podil · Kyiv 04071</span></div>
+      <div class="reserve-info-row"><div class="reserve-dot"></div><span data-en="Monday – Sunday: 10:00 – 22:00" data-uk="Пн – Нд: 10:00 – 22:00">Monday – Sunday: 10:00 – 22:00</span></div>
+      <div class="reserve-info-row"><div class="reserve-dot"></div><a href="tel:0968662323">096 866 2323</a></div>
+      <div class="reserve-info-row"><div class="reserve-dot"></div><span data-en="Also in Lviv (Rynok Sq) & Vinnytsia" data-uk="Також у Львові (пл. Ринок) та Вінниці">Also in Lviv (Rynok Sq) & Vinnytsia</span></div>
+      <div class="reserve-info-row"><div class="reserve-dot"></div><a href="https://takeuseat.in.ua" target="_blank" data-en="Book online at takeuseat.in.ua" data-uk="Онлайн-бронювання: takeuseat.in.ua">Book online at takeuseat.in.ua</a></div>
+    </div>
+  </div>
+  <div class="reserve-right reveal-right">
+    <div class="form-title" data-en="Make a Reservation" data-uk="Забронювати стіл">Make a Reservation</div>
+    <div class="form-grid">
+      <div class="field"><label data-en="First Name" data-uk="Ім'я">First Name</label><input type="text" id="ph-fname" placeholder="Olena"></div>
+      <div class="field"><label data-en="Last Name" data-uk="Прізвище">Last Name</label><input type="text" id="ph-lname" placeholder="Kovalenko"></div>
+      <div class="field"><label data-en="Phone" data-uk="Телефон">Phone</label><input type="tel" placeholder="+38 (0__) ___ ____"></div>
+      <div class="field"><label data-en="Email" data-uk="Ел. пошта">Email</label><input type="email" placeholder="hello@email.com"></div>
+      <div class="field"><label data-en="Date" data-uk="Дата">Date</label><input type="date" id="dateField"></div>
+      <div class="field"><label data-en="Time" data-uk="Час">Time</label>
+        <select>
+          <option value="" data-en="Select time" data-uk="Оберіть час">Select time</option>
+          <option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option>
+        </select>
+      </div>
+      <div class="field"><label data-en="Guests" data-uk="Гостей">Guests</label>
+        <select>
+          <option data-en="1 guest" data-uk="1 гість">1 guest</option>
+          <option selected data-en="2 guests" data-uk="2 гості">2 guests</option>
+          <option data-en="3 guests" data-uk="3 гості">3 guests</option>
+          <option data-en="4 guests" data-uk="4 гості">4 guests</option>
+          <option data-en="5 guests" data-uk="5 гостей">5 guests</option>
+          <option data-en="6+ guests (contact us)" data-uk="6+ гостей (зв'яжіться з нами)">6+ guests (contact us)</option>
+        </select>
+      </div>
+      <div class="field"><label data-en="Occasion" data-uk="Привід">Occasion</label>
+        <select>
+          <option data-en="No special occasion" data-uk="Без особливого приводу">No special occasion</option>
+          <option data-en="Birthday" data-uk="День народження">Birthday</option>
+          <option data-en="Anniversary" data-uk="Річниця">Anniversary</option>
+          <option data-en="Business Lunch" data-uk="Бізнес-ланч">Business Lunch</option>
+          <option data-en="Date Night" data-uk="Романтичний вечір">Date Night</option>
+          <option data-en="Family Gathering" data-uk="Сімейна зустріч">Family Gathering</option>
+        </select>
+      </div>
+      <div class="field form-full"><label data-en="Special Requests" data-uk="Особливі побажання">Special Requests</label><textarea id="ph-textarea" placeholder="Dietary requirements, allergies, seating preferences…"></textarea></div>
+    </div>
+    <button class="form-submit" onclick="submitForm()"><span data-en="Confirm Reservation →" data-uk="Підтвердити бронювання →">Confirm Reservation →</span></button>
+    <p class="form-note" data-en="Or call us: 096 866 2323 · Online: takeuseat.in.ua · We'll confirm within 2 hours." data-uk="Або подзвоніть: 096 866 2323 · Онлайн: takeuseat.in.ua · Підтвердимо протягом 2 годин.">Or call us: 096 866 2323 · Online: takeuseat.in.ua · We'll confirm within 2 hours.</p>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="reveal" style="text-align:center;max-width:1300px;margin:0 auto">
+    <div class="section-label" style="justify-content:center"><i></i><span data-en="Find Us" data-uk="Знайдіть нас">Find Us</span><i></i></div>
+    <h2 class="section-h2"><span data-en="Three" data-uk="Три">Three</span> <em data-en="Cities" data-uk="Міста">Cities</em></h2>
+  </div>
+  <div class="locations-grid">
+    <div class="loc-card reveal">
+      <div class="loc-city" data-en="Kyiv" data-uk="Київ">Kyiv</div>
+      <div class="loc-addr" data-en="Verkhnii Val St, 10<br>Podil · 04071" data-uk="вул. Верхній Вал, 10<br>Поділ · 04071">Verkhnii Val St, 10<br>Podil · 04071</div>
+      <a href="tel:0968662323" class="loc-phone">096 866 2323</a>
+      <div class="loc-hours" data-en="Mon–Sun · 10:00 – 22:00" data-uk="Пн–Нд · 10:00 – 22:00">Mon–Sun · 10:00 – 22:00</div>
+    </div>
+    <div class="loc-card reveal" style="transition-delay:.1s">
+      <div class="loc-city" data-en="Lviv" data-uk="Львів">Lviv</div>
+      <div class="loc-addr" data-en="Rynok Square<br>Krakivska St, 7" data-uk="пл. Ринок<br>вул. Краківська, 7">Rynok Square<br>Krakivska St, 7</div>
+      <a href="tel:0963406073" class="loc-phone">096 340 6073</a>
+      <div class="loc-hours" data-en="Mon–Sun · 10:00 – 22:00" data-uk="Пн–Нд · 10:00 – 22:00">Mon–Sun · 10:00 – 22:00</div>
+    </div>
+    <div class="loc-card reveal" style="transition-delay:.2s">
+      <div class="loc-city" data-en="Vinnytsia" data-uk="Вінниця">Vinnytsia</div>
+      <div class="loc-addr" data-en="City Centre<br>Vinnytsia" data-uk="Центр міста<br>Вінниця">City Centre<br>Vinnytsia</div>
+      <a href="tel:0965509900" class="loc-phone">096 550 9900</a>
+      <div class="loc-hours" data-en="Mon–Sun · 10:00 – 22:00" data-uk="Пн–Нд · 10:00 – 22:00">Mon–Sun · 10:00 – 22:00</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">CHAPTER</div>
+      <p class="footer-tagline" data-en="A restaurant you come for the taste and stay for the feeling. Mediterranean fine dining across three Ukrainian cities." data-uk="Ресторан, до якого приходять заради смаку і залишаються заради відчуттів. Середземноморська висока кухня у трьох українських містах.">A restaurant you come for the taste and stay for the feeling. Mediterranean fine dining across three Ukrainian cities.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Visit" data-uk="Відвідайте">Visit</div>
+      <ul class="footer-links">
+        <li><a href="#" data-en="Kyiv — Verkhnii Val 10" data-uk="Київ — Верхній Вал 10">Kyiv — Verkhnii Val 10</a></li>
+        <li><a href="#" data-en="Lviv — Krakivska 7" data-uk="Львів — Краківська 7">Lviv — Krakivska 7</a></li>
+        <li><a href="#" data-en="Vinnytsia — City Centre" data-uk="Вінниця — Центр міста">Vinnytsia — City Centre</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Discover" data-uk="Дізнатись">Discover</div>
+      <ul class="footer-links">
+        <li><a href="#menu" data-en="Menu" data-uk="Меню">Menu</a></li>
+        <li><a href="#gallery" data-en="Gallery" data-uk="Галерея">Gallery</a></li>
+        <li><a href="#experience" data-en="Experience" data-uk="Враження">Experience</a></li>
+        <li><a href="https://expz.menu" target="_blank" data-en="Menu Online" data-uk="Меню онлайн">Menu Online</a></li>
+        <li><a href="https://takeuseat.in.ua" target="_blank" data-en="Reservations" data-uk="Бронювання">Reservations</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Connect" data-uk="Зв'язок">Connect</div>
+      <ul class="footer-links">
+        <li><a href="https://instagram.com/chapter.kyiv" target="_blank">Instagram @chapter.kyiv</a></li>
+        <li><a href="tel:0968662323">096 866 2323</a></li>
+        <li><a href="mailto:hello@chapter-kyiv.com.ua">hello@chapter-kyiv.com.ua</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 CHAPTER Restaurants · chapter-kyiv.com.ua · <span data-en="Kyiv, Ukraine" data-uk="Київ, Україна">Kyiv, Ukraine</span></p>
+    <div class="footer-socials">
+      <a href="https://instagram.com/chapter.kyiv" target="_blank">Instagram</a>
+      <a href="tel:0968662323" data-en="Call" data-uk="Зателефонувати">Call</a>
+      <a href="https://takeuseat.in.ua" target="_blank" data-en="Book" data-uk="Забронювати">Book</a>
+      <a href="https://expz.menu" target="_blank" data-en="Menu" data-uk="Меню">Menu</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CURSOR ──
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`});
+(function tr(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(tr)})();
+
+// ── LOADER ──
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('out');document.getElementById('hero').classList.add('alive')},2000)});
+
+// ── NAV SCROLL ──
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>80));
+
+// ── PARALLAX ──
+const heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{if(scrollY<innerHeight)heroBg.style.transform=`scale(1) translateY(${scrollY*.28}px)`});
+
+// ── REVEAL ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+// ── MENU TABS ──
+function switchTab(btn,id){
+  document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.getElementById('tab-'+id);
+  if(panel){panel.classList.add('active');panel.querySelectorAll('.reveal').forEach(el=>{el.classList.remove('on');setTimeout(()=>el.classList.add('on'),50+Math.random()*100)})}
+}
+
+// ── DATE MIN ──
+const df=document.getElementById('dateField');
+if(df)df.min=new Date().toISOString().split('T')[0];
+
+// ── TOAST ──
+const toastMsgs={
+  en:'✓  Reservation request sent — we\'ll call you within 2 hours!',
+  uk:'✓  Запит отримано — ми зателефонуємо вам протягом 2 годин!'
+};
+function submitForm(){
+  const t=document.getElementById('toast');
+  t.textContent=toastMsgs[currentLang];
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4500);
+}
+
+// ══════════════════════════════════════
+//  LANGUAGE SWITCHER
+// ══════════════════════════════════════
+let currentLang = 'en';
+
+const placeholders = {
+  en: { fname:'Olena', lname:'Kovalenko', textarea:'Dietary requirements, allergies, seating preferences…' },
+  uk: { fname:'Олена', lname:'Коваленко', textarea:'Дієтичні вимоги, алергії, побажання щодо місця…' }
+};
+
+function setLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+
+  // Toggle button active state
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-uk').classList.toggle('active', lang === 'uk');
+
+  // Fade out
+  document.body.style.transition = 'opacity .18s ease';
+  document.body.style.opacity = '0';
+
+  setTimeout(() => {
+    // Update all data-en / data-uk elements
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      // innerHTML for elements that may contain <br> or HTML
+      if (val.includes('<') || el.tagName === 'A' || el.tagName === 'SPAN' || el.tagName === 'P' || el.tagName === 'DIV' || el.tagName === 'H2' || el.tagName === 'BUTTON') {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Update <html> lang attribute
+    document.documentElement.lang = lang === 'uk' ? 'uk' : 'en';
+
+    // Update page title
+    document.title = lang === 'uk'
+      ? 'CHAPTER — Середземноморська Кухня, Київ'
+      : 'CHAPTER — Fine Mediterranean Dining, Kyiv';
+
+    // Update placeholders
+    const p = placeholders[lang];
+    const fnameEl = document.getElementById('ph-fname');
+    const lnameEl = document.getElementById('ph-lname');
+    const taEl = document.getElementById('ph-textarea');
+    if (fnameEl) fnameEl.placeholder = p.fname;
+    if (lnameEl) lnameEl.placeholder = p.lname;
+    if (taEl) taEl.placeholder = p.textarea;
+
+    // Update loader subtitle (in case still visible)
+    document.querySelectorAll('.loader-sub').forEach(el=>{
+      el.textContent = el.getAttribute('data-' + lang) || el.textContent;
+    });
+
+    // Fade back in
+    document.body.style.opacity = '1';
+  }, 180);
+}
+// ══════════════════════════════════════
+</script>
+</body>
+</html>
